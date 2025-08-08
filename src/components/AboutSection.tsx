@@ -1,3 +1,5 @@
+import churchHero from '@/assets/church-hero.jpg'
+
 const AboutSection = () => {
   return (
     <section id="about" className="py-20 bg-secondary">
@@ -34,9 +36,10 @@ const AboutSection = () => {
             {/* Image */}
             <div className="flex justify-center">
               <div className="bg-card rounded-lg shadow-md overflow-hidden max-w-md">
-                <img 
-                  src="/images/520837633_1143835584443620_6001930786428496459_n.jpg" 
-                  alt="Diocese of Mthatha" 
+                <img
+                  src={churchHero}
+                  alt="About Diocese of Mthatha - church community and heritage"
+                  loading="lazy"
                   className="w-full h-auto object-cover"
                 />
               </div>
