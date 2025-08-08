@@ -1,69 +1,80 @@
 import bishopImage from '@/assets/bishop-portrait.jpg';
+import { Button } from '@/components/ui/button';
 
 const BishopSection = () => {
   return (
-    <section id="bishop" className="py-20 bg-white">
+    <section id="bishop" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-              Message from the Bishop
+          {/* Heading */}
+          <header className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Bishop Sithembele Anton Sipuka
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
-          </div>
+            <p className="text-muted-foreground">Message from the Bishop</p>
+            <div className="w-24 h-1 bg-primary mx-auto mt-6"></div>
+          </header>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Bishop Image */}
-            <div className="text-center">
+          {/* Bio Row */}
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            {/* Bishop Image & Meta */}
+            <aside className="text-center">
               <div className="relative inline-block">
                 <img
                   src={bishopImage}
-                  alt="Bishop of Mthatha"
+                  alt="Portrait of Bishop Sithembele Anton Sipuka - Diocese of Mthatha"
+                  loading="lazy"
                   className="w-80 h-80 object-cover rounded-full mx-auto shadow-lg"
                 />
                 <div className="absolute inset-0 rounded-full border-4 border-primary/20"></div>
               </div>
-              <div className="mt-6">
-                <h3 className="text-2xl font-bold text-primary mb-2">
-                  The Right Reverend Bishop
-                </h3>
-                <p className="text-muted-foreground text-lg">
-                  Diocese of Mthatha
-                </p>
+              <div className="mt-6 space-y-1">
+                <p className="text-sm uppercase tracking-wide text-muted-foreground">Bishop of Mthatha</p>
+                <p className="text-base text-foreground">Serving since 3 May 2008</p>
+                <p className="italic text-primary">“To work and to care”</p>
               </div>
-            </div>
+            </aside>
 
-            {/* Bishop's Message */}
-            <div className="space-y-6">
-              <div className="relative">
-                <div className="absolute top-0 left-0 text-6xl text-primary/20 font-serif">"</div>
-                <div className="pl-12 pt-4">
-                  <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                    Dear beloved community of faith, it is with great joy and thanksgiving that I welcome you to 
-                    the Diocese of Mthatha. In this sacred fellowship, we are called to be instruments of God's 
-                    love, peace, and justice in our world.
-                  </p>
-                  
-                  <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                    Our diocese stands as a testament to the transformative power of faith. Through our shared 
-                    commitment to the Gospel, we work together to build communities of hope, healing, and 
-                    reconciliation. Each parish, each ministry, each act of service contributes to the greater 
-                    mission of Christ in our region.
-                  </p>
-                  
-                  <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                    I encourage you to join us in this sacred journey. Whether you are seeking spiritual growth, 
-                    community connection, or opportunities to serve, you will find a welcoming home in our diocese. 
-                    Together, we can make a lasting difference in our communities and beyond.
-                  </p>
-                  
-                  <p className="text-lg text-primary font-semibold">
-                    May God's blessings be upon you and your families.
-                  </p>
-                </div>
+            {/* Bishop's Message & CTA */}
+            <article className="space-y-6 text-left">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Bishop Sipuka was born in Idutywa in the Diocese of Queenstown on 27 April 1960. In 1967, his
+                family moved to Mthatha where his father worked on the farms. He became a Catholic as a child and his
+                family also converted. He was baptized by Fr. Nicholas Lamla in 1969.
+              </p>
+              <div>
+                <Button asChild>
+                  <a href="#contact" aria-label="Learn more about our bishops">
+                    More About Our Bishops
+                  </a>
+                </Button>
               </div>
-            </div>
+            </article>
           </div>
+
+          {/* Vision & Mission */}
+          <section aria-labelledby="vision-mission" className="mt-16">
+            <h3 id="vision-mission" className="sr-only">Vision and Mission</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <article className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                <h4 className="text-xl font-semibold text-primary mb-3">Our Vision</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  The Catholic Diocese of Mthatha sees itself as an evangelising community serving God, humanity, and
+                  creation. Each member is characterised by a deep personal relationship with Christ and established in
+                  our Catholic faith.
+                  <br /><strong className="text-foreground">John 15:4-6 – Pastoral Plan 2024:6</strong>
+                </p>
+              </article>
+              <article className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                <h4 className="text-xl font-semibold text-primary mb-3">Our Mission</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  We commit ourselves to foster a personal encounter with Christ, deepen our faith, build a strong
+                  community, and continue Christ’s evangelising mission in all spheres of life.
+                  <br /><strong className="text-foreground">Pastoral Plan 2024:6</strong>
+                </p>
+              </article>
+            </div>
+          </section>
         </div>
       </div>
     </section>
