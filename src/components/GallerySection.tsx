@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
-import gallery1 from '@/assets/gallery-1.jpg';
-import gallery2 from '@/assets/gallery-2.jpg';
-import gallery3 from '@/assets/gallery-3.jpg';
-import gallery4 from '@/assets/gallery-4.jpg';
-import gallery5 from '@/assets/gallery-5.jpg';
-import gallery6 from '@/assets/gallery-6.jpg';
+import gallery1 from '@/assets/image1.jpg';
+import gallery2 from '@/assets/image2.jpg';
+import gallery3 from '@/assets/image3.jpg';
+import gallery4 from '@/assets/image4.jpg';
+import gallery5 from '@/assets/image5.jpg';
+import gallery6 from '@/assets/imgae6.jpg';
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);

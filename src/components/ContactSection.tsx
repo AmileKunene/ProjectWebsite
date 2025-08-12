@@ -11,11 +11,8 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 const schema = z.object({
   name: z.string().min(2, { message: 'Please enter your full name' }),
   email: z.string().email({ message: 'Please enter a valid email address' }),
-  message: z
-    .string()
-    .min(10, { message: 'Message must be at least 10 characters' }),
-  // Honeypot field for spam bots
-  website: z.string().optional(),
+  message: z.string().min(10, { message: 'Message must be at least 10 characters' }),
+  website: z.string().optional(), // Honeypot
 });
 
 type FormData = z.infer<typeof schema>;
@@ -34,10 +31,8 @@ const ContactSection = () => {
   });
 
   const onSubmit = async (data: FormData) => {
-    // If honeypot is filled, silently ignore
-    if (data.website) return;
+    if (data.website) return; // spam bot ignore
 
-    // Simulate async submission
     await new Promise((r) => setTimeout(r, 800));
 
     reset();
@@ -48,15 +43,15 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-secondary">
+    <section id="contact" className="py-20 bg-[#433A3F] text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <header className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Contact Us
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto mb-8" aria-hidden="true"></div>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <div className="w-24 h-1 bg-white mx-auto mb-8" aria-hidden="true"></div>
+            <p className="text-lg max-w-3xl mx-auto text-gray-200">
               We would love to hear from you. Whether you have questions, need pastoral care, or want to get involved, please reach out.
             </p>
           </header>
@@ -64,57 +59,57 @@ const ContactSection = () => {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Information */}
             <article className="space-y-8" aria-labelledby="contact-info-heading">
-              <h3 id="contact-info-heading" className="text-2xl font-bold text-primary mb-6">
+              <h3 id="contact-info-heading" className="text-2xl font-bold mb-6">
                 Get in Touch
               </h3>
 
               <ul className="space-y-6">
                 <li className="flex items-start gap-4">
-                  <div className="bg-primary text-primary-foreground p-3 rounded-full">
+                  <div className="bg-white text-[#433A3F] p-3 rounded-full">
                     <MapPin size={20} aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-primary mb-1">Address</h4>
-                    <p className="text-muted-foreground">19 Craister St, Norwood, Mthatha, 5100</p>
+                    <h4 className="font-semibold mb-1">Address</h4>
+                    <p className="text-gray-200">19 Craister St, Norwood, Mthatha, 5100</p>
                   </div>
                 </li>
 
                 <li className="flex items-start gap-4">
-                  <div className="bg-primary text-primary-foreground p-3 rounded-full">
+                  <div className="bg-white text-[#433A3F] p-3 rounded-full">
                     <Phone size={20} aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-primary mb-1">Phone</h4>
-                    <p className="text-muted-foreground">047 532 6301</p>
+                    <h4 className="font-semibold mb-1">Phone</h4>
+                    <p className="text-gray-200">047 532 6301</p>
                   </div>
                 </li>
 
                 <li className="flex items-start gap-4">
-                  <div className="bg-primary text-primary-foreground p-3 rounded-full">
+                  <div className="bg-white text-[#433A3F] p-3 rounded-full">
                     <Mail size={20} aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-primary mb-1">Email</h4>
-                    <p className="text-muted-foreground">sichwayitiles1@gmail.com</p>
+                    <h4 className="font-semibold mb-1">Email</h4>
+                    <p className="text-gray-200">sichwayitiles1@gmail.com</p>
                   </div>
                 </li>
 
                 <li className="flex items-start gap-4">
-                  <div className="bg-primary text-primary-foreground p-3 rounded-full">
+                  <div className="bg-white text-[#433A3F] p-3 rounded-full">
                     <Clock size={20} aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-primary mb-1">Office Hours</h4>
-                    <p className="text-muted-foreground">Mon - Thu: 8:00 AM - 4:30 PM</p>
-                    <p className="text-muted-foreground">Fri: 8:00 AM - 4:00 PM</p>
+                    <h4 className="font-semibold mb-1">Office Hours</h4>
+                    <p className="text-gray-200">Mon - Thu: 8:00 AM - 4:30 PM</p>
+                    <p className="text-gray-200">Fri: 8:00 AM - 4:00 PM</p>
                   </div>
                 </li>
               </ul>
             </article>
 
             {/* Contact Form */}
-            <aside className="bg-card rounded-lg border shadow-sm p-8">
-              <h3 className="text-2xl font-bold text-primary mb-6">Send us a Message</h3>
+            <aside className="bg-white text-[#433A3F] rounded-lg border shadow-sm p-8">
+              <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
 
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
                 {/* Honeypot */}
@@ -128,7 +123,7 @@ const ContactSection = () => {
                 />
 
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-primary mb-2">
+                  <label htmlFor="name" className="block text-sm font-semibold mb-2">
                     Full Name *
                   </label>
                   <Input
@@ -139,14 +134,14 @@ const ContactSection = () => {
                     {...register('name')}
                   />
                   {errors.name && (
-                    <p role="alert" className="mt-2 text-sm font-medium text-destructive">
+                    <p role="alert" className="mt-2 text-sm font-medium text-red-600">
                       {errors.name.message}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-primary mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold mb-2">
                     Email Address *
                   </label>
                   <Input
@@ -158,14 +153,14 @@ const ContactSection = () => {
                     {...register('email')}
                   />
                   {errors.email && (
-                    <p role="alert" className="mt-2 text-sm font-medium text-destructive">
+                    <p role="alert" className="mt-2 text-sm font-medium text-red-600">
                       {errors.email.message}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-primary mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold mb-2">
                     Message *
                   </label>
                   <Textarea
@@ -176,20 +171,20 @@ const ContactSection = () => {
                     {...register('message')}
                   />
                   {errors.message && (
-                    <p role="alert" className="mt-2 text-sm font-medium text-destructive">
+                    <p role="alert" className="mt-2 text-sm font-medium text-red-600">
                       {errors.message.message}
                     </p>
                   )}
                 </div>
 
-                <Button type="submit" disabled={isSubmitting} className="w-full">
+                <Button type="submit" disabled={isSubmitting} className="w-full bg-[#433A3F] hover:bg-[#322C30] text-white">
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </aside>
           </div>
 
-          {/* Responsive Map */}
+          {/* Map */}
           <div className="mt-12">
             <AspectRatio ratio={16 / 9}>
               <iframe
@@ -203,36 +198,6 @@ const ContactSection = () => {
               />
             </AspectRatio>
           </div>
-
-          {/* JSON-LD Structured Data for ContactPoint */}
-          <script
-            type="application/ld+json"
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'Organization',
-                name: 'Catholic Diocese of Mthatha',
-                address: {
-                  '@type': 'PostalAddress',
-                  streetAddress: '19 Craister St, Norwood',
-                  addressLocality: 'Mthatha',
-                  postalCode: '5100',
-                  addressCountry: 'ZA',
-                },
-                contactPoint: [
-                  {
-                    '@type': 'ContactPoint',
-                    telephone: '+27-47-532-6301',
-                    email: 'sichwayitiles1@gmail.com',
-                    contactType: 'customer support',
-                    areaServed: 'ZA',
-                    availableLanguage: 'en',
-                  },
-                ],
-              }),
-            }}
-          />
         </div>
       </div>
     </section>

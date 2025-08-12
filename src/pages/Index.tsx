@@ -5,6 +5,7 @@ import AboutSection from '@/components/AboutSection';
 import BishopSection from '@/components/BishopSection';
 import ParishesSection from '@/components/ParishesSection';
 import GallerySection from '@/components/GallerySection';
+import FacebookFeedSection from '@/components/FacebookFeedSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
@@ -52,6 +53,7 @@ const Index = () => {
       <BishopSection />
       <ParishesSection />
       <GallerySection />
+      <FacebookFeedSection />
       <ContactSection />
       <Footer />
     </div>

@@ -1,5 +1,6 @@
-import bishopImage from '@/assets/bishop-portrait.jpg';
+import bishopImage from '@/assets/bishop-portrait.webp';
 import { Button } from '@/components/ui/button';
+import { Link } from "react-router-dom";
 
 const BishopSection = () => {
   return (
@@ -44,9 +45,9 @@ const BishopSection = () => {
               </p>
               <div>
                 <Button asChild>
-                  <a href="#contact" aria-label="Learn more about our bishops">
-                    More About Our Bishops
-                  </a>
+                   <Link to="/bishops" aria-label="Learn more about our bishops">
+                     More About Our Bishops
+                   </Link>
                 </Button>
               </div>
             </article>

@@ -1,4 +1,4 @@
-import churchHero from '@/assets/church-hero.jpg'
+import churchHero from '@/assets/aboutimage.jpg'
 
 const AboutSection = () => {
   return (

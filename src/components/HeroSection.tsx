@@ -22,14 +22,6 @@ const HeroSection = () => {
         <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
           A community of faith, hope, and love serving the Eastern Cape region with dedication and compassion.
         </p>
-        <div className="space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center">
-          <button className="block w-full md:w-auto bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-accent transition-colors duration-300">
-            Join Our Community
-          </button>
-          <button className="block w-full md:w-auto border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors duration-300">
-            Service Times
-          </button>
-        </div>
       </div>
 
       {/* Scroll Indicator */}

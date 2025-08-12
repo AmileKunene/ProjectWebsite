@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Diocese of Mthatha Church Website Design System
-All colors MUST be HSL. Church-appropriate neutral colors.
-*/
 
 @layer base {
   :root {

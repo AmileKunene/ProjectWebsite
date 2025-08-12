@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
+// Import the logo image
+import dioceseLogo from '@/assets/diocese-logo.png';
+
 interface NavigationProps {
   currentSection: string;
   onNavigate: (section: string) => void;
@@ -27,9 +30,17 @@ const Navigation = ({ currentSection, onNavigate }: NavigationProps) => {
     <nav className="bg-primary text-primary-foreground shadow-lg fixed w-full top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          {/* Logo/Title */}
-          <div className="text-xl font-bold">
-            Diocese of Mthatha
+          {/* Logo + Title */}
+          <div className="flex items-center space-x-3">
+            <img
+              src={dioceseLogo}
+              alt="Diocese of Mthatha Logo"
+              className="h-10 w-auto"
+              loading="lazy"
+            />
+            <span className="text-xl font-bold select-none">
+              Diocese of Mthatha
+            </span>
           </div>
 
           {/* Desktop Navigation */}
@@ -39,7 +50,9 @@ const Navigation = ({ currentSection, onNavigate }: NavigationProps) => {
                 <button
                   onClick={() => handleNavClick(item.id)}
                   className={`hover:text-accent transition-colors duration-200 ${
-                    currentSection === item.id ? 'text-accent border-b-2 border-accent' : ''
+                    currentSection === item.id
+                      ? 'text-accent border-b-2 border-accent'
+                      : ''
                   }`}
                 >
                   {item.label}
@@ -67,7 +80,9 @@ const Navigation = ({ currentSection, onNavigate }: NavigationProps) => {
                   <button
                     onClick={() => handleNavClick(item.id)}
                     className={`block w-full text-left py-2 px-4 hover:bg-primary/80 transition-colors duration-200 ${
-                      currentSection === item.id ? 'bg-primary/80 text-accent' : ''
+                      currentSection === item.id
+                        ? 'bg-primary/80 text-accent'
+                        : ''
                     }`}
                   >
                     {item.label}

@@ -1,173 +1,17 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MapPin, Phone, Mail, Search } from 'lucide-react';
+import { parishData, createParishSlug } from '@/data/parishes';
 
 const ParishesSection = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeRegion, setActiveRegion] = useState('all');
 
-  const parishData = {
-    "Mthatha Region": [
-      {
-        name: "Ascension Parish",
-        location: "98 Chief Jojo Street, Southridge Park, Mthatha",
-        contact: "063 073 1361",
-        type: "phone"
-      },
-      {
-        name: "All Saints",
-        location: "6 Creaister Street, Mthatha",
-        contact: "076 333 3451",
-        telephone: "047 532 2829",
-        type: "phone"
-      },
-      {
-        name: "St. Paul's (Mthatha)",
-        location: "217-218 Church Street, Ngangelizwe",
-        contact: "061 038 3086",
-        telephone: "047 532 0580",
-        type: "phone"
-      },
-      {
-        name: "St. Anthony Bedford",
-        location: "Chris Hani Location",
-        contact: "071 908 1684",
-        type: "phone"
-      },
-      {
-        name: "St. Emmanuel Landsend",
-        location: "Mpeko A/A, KwaDlomo",
-        contact: "071 908 1684",
-        type: "phone"
-      },
-      {
-        name: "Ngqeleni (St Joseph's)",
-        location: "58 Armstrong Street, Ngqeleni",
-        contact: "083 740 1918",
-        type: "phone"
-      },
-      {
-        name: "Cala (Sacred Heart)",
-        location: "11 Zithethele, Mthatha",
-        contact: "067 711 3301",
-        type: "phone"
-      }
-    ],
-    "Matatiele Region": [
-      {
-        name: "Mariazell (Sacred Heart)",
-        location: "Thaba Chicha",
-        contact: "072 179 9312",
-        type: "phone"
-      },
-      {
-        name: "Marialiden (St Mary)",
-        location: "Mpharane A/A",
-        contact: "079 374 4554",
-        type: "phone"
-      },
-      {
-        name: "Shepherd's Hope",
-        location: "Mehlolwaneng Village",
-        contact: "frmafuponya@gmail.com",
-        type: "email"
-      },
-      {
-        name: "Tsita (St Andrew's)",
-        location: "Nkowene Village",
-        contact: "072 863 5621",
-        type: "phone"
-      }
-    ],
-    "Mount Fletcher Region": [
-      {
-        name: "Farview (Our Lady Of Lourdes)",
-        location: "Dengwane Village",
-        contact: "073 895 5630",
-        type: "phone"
-      },
-      {
-        name: "Mt Fletcher (St Martin)",
-        location: "213 Back Street",
-        contact: "084 321 2237",
-        type: "phone"
-      }
-    ],
-    "Qumbu & Tsolo": [
-      {
-        name: "Qumbu (Christ The King)",
-        location: "25 Main Street",
-        contact: "064 780 2568",
-        type: "phone"
-      },
-      {
-        name: "Martyrs Of Uganda (Tsolo)",
-        location: "Dengwane Village",
-        contact: "073 895 5630",
-        type: "phone"
-      }
-    ],
-    "Maclear & Elliot": [
-      {
-        name: "Maclear (St Francis)",
-        location: "1 Phambili Street",
-        contact: "083 690 9093",
-        type: "phone"
-      },
-      {
-        name: "St Barnabas (Elliot)",
-        location: "9 Masson Street",
-        contact: "083 518 7767",
-        type: "phone"
-      }
-    ],
-    "Ngcobo & Cala": [
-      {
-        name: "Ngcobo (St Paul's)",
-        location: "9 Elliot Street",
-        contact: "083 518 7767",
-        type: "phone"
-      },
-      {
-        name: "Cala (Sacred Heart)",
-        location: "474 Bo Street",
-        contact: "060 694 6063",
-        type: "phone"
-      },
-      {
-        name: "Elliotdale (Sacred Heart)",
-        location: "11–22 Main Road, Elliotdale",
-        contact: "072 179 9312",
-        type: "phone"
-      }
-    ],
-    "Libode Area": [
-      {
-        name: "Cwele (St Michael's)",
-        location: "Cwele A/A",
-        contact: "073 232 5609",
-        type: "phone"
-      },
-      {
-        name: "Mount Nicholas Libode",
-        location: "Masameni A/A",
-        contact: "060 694 6063",
-        type: "phone"
-      }
-    ],
-    "Port St. John's": [
-      {
-        name: "St. John the Baptist",
-        location: "191 Mountain Road",
-        contact: "083 974 4886",
-        type: "phone"
-      }
-    ]
-  };
-
+  // parishData is imported from '@/data/parishes'
   // Get all parishes for search
   const allParishes = Object.entries(parishData).flatMap(([region, parishes]) => 
     parishes.map(parish => ({ ...parish, region }))
@@ -237,7 +81,7 @@ const ParishesSection = () => {
                         </h3>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                           {regionParishes.map((parish, index) => (
-                            <ParishCard key={`${region}-${index}`} parish={parish} />
+                            <ParishCard key={`${region}-${index}`} parish={parish} region={region} />
                           ))}
                         </div>
                       </div>
@@ -255,7 +99,7 @@ const ParishesSection = () => {
                         parish.location.toLowerCase().includes(searchTerm.toLowerCase())
                       )
                       .map((parish, index) => (
-                        <ParishCard key={`${region}-filtered-${index}`} parish={parish} />
+                        <ParishCard key={`${region}-filtered-${index}`} parish={parish} region={region} />
                       ))}
                   </div>
                 </TabsContent>
@@ -288,7 +132,7 @@ const ParishesSection = () => {
 };
 
 // Parish Card Component
-const ParishCard = ({ parish }: { parish: any }) => {
+const ParishCard = ({ parish, region }: { parish: any; region: string }) => {
   return (
     <Card className="group hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
       <CardHeader className="pb-3">
@@ -324,13 +168,15 @@ const ParishCard = ({ parish }: { parish: any }) => {
           </div>
         )}
         
-        <Button 
-          variant="outline" 
-          size="sm" 
-          className="w-full mt-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-        >
-          Visit Parish
-        </Button>
+        <Link to={`/parishes/${createParishSlug(parish.name, region)}`} aria-label={`Visit ${parish.name} details`}>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="w-full mt-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+          >
+            Visit Parish
+          </Button>
+        </Link>
       </CardContent>
     </Card>
   );
